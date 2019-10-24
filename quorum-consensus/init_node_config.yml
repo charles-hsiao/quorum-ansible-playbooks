@@ -1,0 +1,12 @@
+- hosts: all
+  tasks:
+      - name: delete node_config if existed
+        file:
+          path: "~/node_config"
+          state: absent
+      - name: Pipe node index
+        shell: echo "NODE_INDEX={{ groups['aws_ec2'].index(inventory_hostname) + 1 }}" >> ~/node_config
+      - name: Pipe private IP
+        shell: echo "NODE_IP={{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}" >> ~/node_config
+      - name: Pipe peers IPs
+        shell: echo "PEER_IPS=$(aws ec2 describe-instances --region us-west-2 --filter Name=tag:aws:autoscaling:groupName,Values=stag-quorum-quorum-nodes --output=json | jq -r '.Reservations[].Instances[].PrivateIpAddress | select(. != null)' | tr '\n' ',' | rev | cut -c 2- | rev)" >> ~/node_config
