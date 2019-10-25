@@ -5,7 +5,8 @@
   tasks:
       - name: init prometheus config
         template: src=prometheus.yml.tpl dest=/home/ubuntu/prometheus/prometheus.yml
-        notify: start prometheus
+        notify: restart prometheus
   handlers:
-    - name: start prometheus
-      shell: sudo bash /etc/init.d/prometheus start
+    - name: restart prometheus
+      shell: monit prometheus restart
+      become: yes
