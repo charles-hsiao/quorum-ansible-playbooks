@@ -1,0 +1,14 @@
+- hosts: 127.0.0.1
+  connection: local
+  tasks:
+      - name: copy datasources provisioning config
+        copy: 
+          src: provisioning/datasources/grafana.yml 
+          dest: /etc/grafana/provisioning/datasources/grafana.yml
+      - name: copy dashboards provisioning config
+          src: provisioning/dashboards/dashboards.yml
+          dest: /etc/grafana/provisioning/dashboards/dashboards.yml
+        notify: restart grafana
+  handlers:
+    - name: restart grafana
+      shell: sudo monit grafana restart
