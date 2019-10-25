@@ -7,6 +7,14 @@
           dest: /etc/grafana/provisioning/datasources/prometheus.yml
         become: yes
         notify: restart grafana
+      - name: create dashboards config path
+        file:
+          path: /home/ubuntu/grafana/dashboards
+          state: directory
+      - name: copy dashboards configs
+        synchronize:
+          src: dashboards
+          dest: /home/ubuntu/grafana
       - name: copy dashboards provisioning config
         copy:
           src: provisioning/dashboards/dashboards.yml
