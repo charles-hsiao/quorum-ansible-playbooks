@@ -2,13 +2,18 @@
   connection: local
   tasks:
       - name: copy datasources provisioning config
-        copy: 
-          src: provisioning/datasources/grafana.yml 
-          dest: /etc/grafana/provisioning/datasources/grafana.yml
+        copy:
+          src: provisioning/datasources/prometheus.yml
+          dest: /etc/grafana/provisioning/datasources/prometheus.yml
+        become: yes
+        notify: restart grafana
       - name: copy dashboards provisioning config
+        copy:
           src: provisioning/dashboards/dashboards.yml
           dest: /etc/grafana/provisioning/dashboards/dashboards.yml
+        become: yes
         notify: restart grafana
   handlers:
     - name: restart grafana
-      shell: sudo monit grafana restart
+      shell: monit restart grafana-server
+      become: yes
