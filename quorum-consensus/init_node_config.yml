@@ -4,9 +4,16 @@
         file:
           path: "~/node_config"
           state: absent
-      - name: Pipe node index
+      - name: Pipe node index to ~/node_config
         shell: echo "NODE_INDEX={{ groups['aws_ec2'].index(inventory_hostname) + 1 }}" >> ~/node_config
-      - name: Pipe private IP
+      - name: Pipe private IP to ~/node_config
         shell: echo "NODE_IP={{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'] }}" >> ~/node_config
-      - name: Pipe peers IPs
+      - name: Pipe peers IPs to ~/node_config
         shell: echo "PEER_IPS=$(aws ec2 describe-instances --region us-west-2 --filter Name=tag:aws:autoscaling:groupName,Values=stag-quorum-quorum-nodes --output=json | jq -r '.Reservations[].Instances[].PrivateIpAddress | select(. != null)' | tr '\n' ',' | rev | cut -c 2- | rev)" >> ~/node_config
+      - name: delete node_peers if existed
+        file:
+          path: "~/node_peers"
+          state: absent
+      - name: Pipe peers config
+        shell: echo "{{ hostvars[item]['ansible_default_ipv4']['address'] }}" >> ~/node_peers
+        with_items: "{{ groups['aws_ec2'] }}"
