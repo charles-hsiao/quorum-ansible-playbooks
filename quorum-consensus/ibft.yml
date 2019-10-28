@@ -12,6 +12,8 @@
         dest: /home/ubuntu/quorum-experiment/nodes/permissioned-nodes.json
     - name: Only keep needed permissioned nodes
       shell: cd /home/ubuntu/quorum-experiment/nodes && bash remove-permissioned-nodes.sh "{{ NodesNum }}"
+    - name: Update peers IPs
+      shell: cd /home/ubuntu/quorum-experiment/nodes && bash update-permissioned-nodes.sh "{{ NodesNum }}"
     - name: Init IBFT
       shell: cd /home/ubuntu/quorum-experiment/nodes && bash istanbul-init.sh --numNodes "{{ NodesNum }}"
     - name: Start IBFT
