@@ -1,7 +1,7 @@
 - hosts: aws_ec2
   vars:
     NodesNum: 5
-    # tessera / tesssera-remote / constellation
+    # tessera / tessera-remote / constellation
     PrivacyImpl: tessera
   tasks:
     - name: delete permissioned-nodes.json if existed
