@@ -1,0 +1,4 @@
+- hosts: aws_ec2
+  tasks:
+    - name: Stop all
+      shell: cd /home/ubuntu/quorum-experiment/nodes && bash stop.sh
