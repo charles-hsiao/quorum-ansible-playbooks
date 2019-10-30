@@ -1,6 +1,8 @@
 - hosts: aws_ec2
   vars:
-    NodesNum: 2
+    NodesNum: 5
+    # tessera / tesssera-remote / constellation
+    PrivacyImpl: tessera
   tasks:
     - name: delete permissioned-nodes.json if existed
       file:
@@ -17,4 +19,4 @@
     - name: Init clique
       shell: cd /home/ubuntu/quorum-experiment/nodes && bash clique-init.sh --numNodes "{{ NodesNum }}"
     - name: Start clique
-      shell: cd /home/ubuntu/quorum-experiment/nodes && bash clique-start.sh
+      shell: cd /home/ubuntu/quorum-experiment/nodes && bash clique-start.sh "{{ PrivacyImpl }}"
