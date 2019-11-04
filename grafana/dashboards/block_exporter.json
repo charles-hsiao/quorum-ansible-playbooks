@@ -822,9 +822,6 @@
       {
         "allValue": null,
         "current": {
-          "tags": [],
-          "text": "10.0.1.154:8000",
-          "value": "10.0.1.154:8000"
         },
         "datasource": "Prometheus",
         "definition": "geth_net_listening{job='block'}",
@@ -834,41 +831,6 @@
         "multi": false,
         "name": "instance",
         "options": [
-          {
-            "selected": false,
-            "text": "10.0.1.12:8000",
-            "value": "10.0.1.12:8000"
-          },
-          {
-            "selected": true,
-            "text": "10.0.1.154:8000",
-            "value": "10.0.1.154:8000"
-          },
-          {
-            "selected": false,
-            "text": "10.0.1.175:8000",
-            "value": "10.0.1.175:8000"
-          },
-          {
-            "selected": false,
-            "text": "10.0.1.17:8000",
-            "value": "10.0.1.17:8000"
-          },
-          {
-            "selected": false,
-            "text": "10.0.1.203:8000",
-            "value": "10.0.1.203:8000"
-          },
-          {
-            "selected": false,
-            "text": "10.0.1.208:8000",
-            "value": "10.0.1.208:8000"
-          },
-          {
-            "selected": false,
-            "text": "10.0.1.30:8000",
-            "value": "10.0.1.30:8000"
-          }
         ],
         "query": "geth_net_listening{job='block'}",
         "refresh": 0,
