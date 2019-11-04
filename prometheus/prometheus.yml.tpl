@@ -27,3 +27,8 @@ scrape_configs:
       - access_key: {{ aws_key }}
         secret_key: {{ aws_secret }}
         port: 9100
+  - job_name: 'block'
+    ec2_sd_configs:
+      - access_key: {{ aws_key }}
+        secret_key: {{ aws_secret }}
+        port: 8000
