@@ -32,3 +32,8 @@ scrape_configs:
       - access_key: {{ aws_key }}
         secret_key: {{ aws_secret }}
         port: 8000
+  - job_name: 'tessera'
+    ec2_sd_configs:
+      - access_key: {{ aws_key }}
+        secret_key: {{ aws_secret }}
+        port: 8001
