@@ -1,4 +1,7 @@
 - hosts: all
+  vars:
+    User: ubuntu
+    ProjectDir: "/home/{{ User }}/quorum-experiment/nodes"
   tasks:
     - include_tasks: tasks/stop-all.yml
     - include_tasks: tasks/init_node_config.yml
