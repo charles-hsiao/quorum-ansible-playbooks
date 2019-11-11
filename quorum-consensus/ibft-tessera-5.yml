@@ -1,7 +1,7 @@
-- hosts: all
-  vars:
-    User: ubuntu
-    ProjectDir: "/home/{{ User }}/quorum-experiment/nodes"
+- name: Consensus provisioning
+  hosts: all
+  vars_files:
+    - vars/common.yml
   tasks:
     - include_tasks: tasks/stop-all.yml
     - include_tasks: tasks/init_node_config.yml
@@ -11,3 +11,8 @@
     - include_tasks: tasks/start_ibft.yml
       vars:
         PrivacyImpl: tessera
+- name: Send transaction(WIP)
+  hosts: aws_ec2[0]
+  tasks:
+    - pause:
+        seconds: 5
