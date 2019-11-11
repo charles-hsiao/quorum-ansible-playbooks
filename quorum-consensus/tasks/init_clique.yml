@@ -11,7 +11,5 @@
   shell: cd /home/ubuntu/quorum-experiment/nodes && bash remove-permissioned-nodes.sh "{{ NodesNum }}"
 - name: Update peers IPs
   shell: cd /home/ubuntu/quorum-experiment/nodes && bash update-permissioned-nodes.sh "{{ NodesNum }}"
-- name: Init IBFT
-  shell: cd /home/ubuntu/quorum-experiment/nodes && bash istanbul-init.sh --numNodes "{{ NodesNum }}"
-- name: Start IBFT
-  shell: cd /home/ubuntu/quorum-experiment/nodes && bash istanbul-start.sh "{{ PrivacyImpl }}"
+- name: Init clique
+  shell: cd /home/ubuntu/quorum-experiment/nodes && bash clique-init.sh --numNodes "{{ NodesNum }}"

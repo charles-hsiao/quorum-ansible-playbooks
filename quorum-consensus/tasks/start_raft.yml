@@ -1,0 +1,3 @@
+---
+- name: Start raft
+  shell: cd /home/ubuntu/quorum-experiment/nodes && bash raft-start.sh "{{ PrivacyImpl }}"

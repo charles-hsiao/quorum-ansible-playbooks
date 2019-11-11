@@ -13,5 +13,3 @@
   shell: cd /home/ubuntu/quorum-experiment/nodes && bash update-permissioned-nodes.sh "{{ NodesNum }}"
 - name: Init raft
   shell: cd /home/ubuntu/quorum-experiment/nodes && bash raft-init.sh --numNodes "{{ NodesNum }}"
-- name: Start raft
-  shell: cd /home/ubuntu/quorum-experiment/nodes && bash raft-start.sh "{{ PrivacyImpl }}"
