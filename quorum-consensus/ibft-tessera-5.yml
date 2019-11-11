@@ -1,0 +1,7 @@
+- hosts: all
+  tasks:
+    - include_tasks: tasks/init_node_config.yml
+    - include_tasks: tasks/ibft.yml
+      vars:
+        NodesNum: 5
+        PrivacyImpl: tessera
