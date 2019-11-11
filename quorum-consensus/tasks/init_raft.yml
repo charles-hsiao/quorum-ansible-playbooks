@@ -1,15 +1,15 @@
 ---
 - name: delete permissioned-nodes.json if existed
   file:
-    path: "/home/ubuntu/quorum-experiment/nodes/permissioned-nodes.json"
+    path: "{{ ProjectDir }}/permissioned-nodes.json"
     state: absent
 - name: Init permissioned-nodes.json
   copy:
     src: ../files/permissioned-nodes.json
-    dest: /home/ubuntu/quorum-experiment/nodes/permissioned-nodes.json
+    dest: "{{ ProjectDir }}/permissioned-nodes.json"
 - name: Only keep needed permissioned nodes
-  shell: cd /home/ubuntu/quorum-experiment/nodes && bash remove-permissioned-nodes.sh "{{ NodesNum }}"
+  shell: "cd {{ ProjectDir }} && bash remove-permissioned-nodes.sh {{ NodesNum }}"
 - name: Update peers IPs
-  shell: cd /home/ubuntu/quorum-experiment/nodes && bash update-permissioned-nodes.sh "{{ NodesNum }}"
+  shell: "cd {{ ProjectDir }} && bash update-permissioned-nodes.sh {{ NodesNum }}"
 - name: Init raft
-  shell: cd /home/ubuntu/quorum-experiment/nodes && bash raft-init.sh --numNodes "{{ NodesNum }}"
+  shell: "cd {{ ProjectDir }} && bash raft-init.sh --numNodes {{ NodesNum }}"
