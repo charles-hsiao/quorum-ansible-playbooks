@@ -13,5 +13,3 @@
   shell: cd /home/ubuntu/quorum-experiment/nodes && bash update-permissioned-nodes.sh "{{ NodesNum }}"
 - name: Init clique
   shell: cd /home/ubuntu/quorum-experiment/nodes && bash clique-init.sh --numNodes "{{ NodesNum }}"
-- name: Start clique
-  shell: cd /home/ubuntu/quorum-experiment/nodes && bash clique-start.sh "{{ PrivacyImpl }}"
