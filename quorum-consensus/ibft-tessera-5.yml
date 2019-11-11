@@ -1,5 +1,6 @@
 - hosts: all
   tasks:
+    - include_tasks: tasks/stop-all.yml
     - include_tasks: tasks/init_node_config.yml
     - include_tasks: tasks/ibft.yml
       vars:
