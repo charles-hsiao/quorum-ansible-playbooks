@@ -1,4 +1,3 @@
 ---
-tasks:
-  - name: Stop all
-    shell: cd /home/ubuntu/quorum-experiment/nodes && bash stop.sh
+- name: Stop all
+  shell: cd /home/ubuntu/quorum-experiment/nodes && bash stop.sh

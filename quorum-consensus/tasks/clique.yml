@@ -1,18 +1,17 @@
 ---
-tasks:
-  - name: delete permissioned-nodes.json if existed
-    file:
-      path: "/home/ubuntu/quorum-experiment/nodes/permissioned-nodes.json"
-      state: absent
-  - name: Init permissioned-nodes.json
-    copy:
-      src: permissioned-nodes.json
-      dest: /home/ubuntu/quorum-experiment/nodes/permissioned-nodes.json
-  - name: Only keep needed permissioned nodes
-    shell: cd /home/ubuntu/quorum-experiment/nodes && bash remove-permissioned-nodes.sh "{{ NodesNum }}"
-  - name: Update peers IPs
-    shell: cd /home/ubuntu/quorum-experiment/nodes && bash update-permissioned-nodes.sh "{{ NodesNum }}"
-  - name: Init clique
-    shell: cd /home/ubuntu/quorum-experiment/nodes && bash clique-init.sh --numNodes "{{ NodesNum }}"
-  - name: Start clique
-    shell: cd /home/ubuntu/quorum-experiment/nodes && bash clique-start.sh "{{ PrivacyImpl }}"
+- name: delete permissioned-nodes.json if existed
+  file:
+    path: "/home/ubuntu/quorum-experiment/nodes/permissioned-nodes.json"
+    state: absent
+- name: Init permissioned-nodes.json
+  copy:
+    src: permissioned-nodes.json
+    dest: /home/ubuntu/quorum-experiment/nodes/permissioned-nodes.json
+- name: Only keep needed permissioned nodes
+  shell: cd /home/ubuntu/quorum-experiment/nodes && bash remove-permissioned-nodes.sh "{{ NodesNum }}"
+- name: Update peers IPs
+  shell: cd /home/ubuntu/quorum-experiment/nodes && bash update-permissioned-nodes.sh "{{ NodesNum }}"
+- name: Init clique
+  shell: cd /home/ubuntu/quorum-experiment/nodes && bash clique-init.sh --numNodes "{{ NodesNum }}"
+- name: Start clique
+  shell: cd /home/ubuntu/quorum-experiment/nodes && bash clique-start.sh "{{ PrivacyImpl }}"
