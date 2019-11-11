@@ -2,7 +2,9 @@
   tasks:
     - include_tasks: tasks/stop-all.yml
     - include_tasks: tasks/init_node_config.yml
-    - include_tasks: tasks/ibft.yml
+    - include_tasks: tasks/init_ibft.yml
       vars:
         NodesNum: 5
+    - include_tasks: tasks/start_ibft.yml
+      vars:
         PrivacyImpl: tessera
