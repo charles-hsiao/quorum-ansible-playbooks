@@ -2,24 +2,9 @@
 
 ## Usage
 
-### Init node config
+### Example: Run IBFT with Terrera Quorum nodes playbook
 ```
-~$ ansible-playbook -i aws_ec2.yml quorum-consensus/init_node_config.yml
-```
-
-### Run consensus
-```
-# Modify "NodesNum" and "PrivacyImpl" if needed
-
-# Run IBFT
-~$ ansible-playbook -i aws_ec2.yml quorum-consensus/ibft.yml
-
-# Run Clique
-~$ ansible-playbook -i aws_ec2.yml quorum-consensus/clique.yml
-
-# Run raft
-~$ ansible-playbook -i aws_ec2.yml quorum-consensus/raft.yml
-
+~$ ansible-playbook -i quorum-consensus/inventories/aws_ec2.yml quorum-consensus/ibft-tessera-5.yml
 ```
 
 ### Clear aws\_ec2 cache if add/remove EC2 quorum nodes
