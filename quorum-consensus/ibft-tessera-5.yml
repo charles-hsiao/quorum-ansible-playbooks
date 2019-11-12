@@ -11,8 +11,16 @@
     - include_tasks: tasks/start_ibft.yml
       vars:
         PrivacyImpl: tessera
-- name: Send transaction(WIP)
+- name: Send transactions
   hosts: aws_ec2[0]
+  vars_files:
+    - vars/common.yml
   tasks:
+    - include_tasks: tasks/send-public-events.yml
     - pause:
-        seconds: 5
+        seconds: 1
+    - include_tasks: tasks/send-private-events.yml
+    - pause:
+        seconds: 1
+    - include_tasks: tasks/send-public-events.yml
+      with_sequence: count=4
