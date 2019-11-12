@@ -21,6 +21,6 @@
         seconds: 1
     - include_tasks: tasks/send-private-events.yml
     - pause:
-        seconds: 1
+        prompt: "Start sending 1000 transactions?"
     - include_tasks: tasks/send-public-events.yml
-      with_sequence: count=4
+      with_sequence: count=50
