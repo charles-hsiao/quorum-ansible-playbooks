@@ -1,0 +1,3 @@
+---
+- name: Send 20 public events
+  shell: "cd {{ ProjectDir }} && bash runscript.sh samples/simple-event/public-generate-events.js"
