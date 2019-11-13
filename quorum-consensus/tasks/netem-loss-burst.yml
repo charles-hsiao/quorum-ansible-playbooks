@@ -1,0 +1,4 @@
+---
+- name: Action for packet loss burst (If correlation_probability=25%, Probn = .25 * Probn-1 + .75 * Random)
+  shell: "tc qdisc {{ action | default('add') }} dev {{ network_interface | default('eth0') }} root netem loss {{ probability }} {{ correlation_probability }}"
+  become: yes
