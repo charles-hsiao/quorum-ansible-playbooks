@@ -11,7 +11,7 @@
     - include_tasks: tasks/start-ibft.yml
       vars:
         PrivacyImpl: tessera
-- name: Send transactions
+- name: Send transactions from node-1
   hosts: aws_ec2[0]
   vars_files:
     - vars/common.yml
