@@ -1,4 +1,4 @@
 ---
 - name: Clear all netem settings
-  shell: "tc qdisc del dev ens5 root netem 2>/dev/null || true"
+  shell: "tc qdisc delete dev {{ network_interface }} root netem 2>/dev/null || true"
   become: yes
