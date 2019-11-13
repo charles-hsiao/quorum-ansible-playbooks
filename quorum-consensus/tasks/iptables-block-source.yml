@@ -1,0 +1,4 @@
+---
+- name: Block traffic from target block IP
+  shell: "iptables --append INPUT --source {{ block_ip }} -j DROP"
+  become: yes
