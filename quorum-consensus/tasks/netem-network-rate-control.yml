@@ -1,0 +1,4 @@
+---
+- name: Action for rate control (Limit bandwidth)
+  shell: "tc qdisc {{ action | default('add') }} dev {{ network_interface | default('eth0') }} root handle 1:0 netem delay {{ delay_time }} && tc qdisc {{ action | default('add') }} dev {{ network_interface | default('eth0') }} parent 1:1 handle 10: tbf rate {{ network_rate_limit }} buffer 1600 limit 3000"
+  become: yes
