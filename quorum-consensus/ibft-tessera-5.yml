@@ -4,11 +4,11 @@
     - vars/common.yml
   tasks:
     - include_tasks: tasks/stop-all.yml
-    - include_tasks: tasks/init_node_config.yml
-    - include_tasks: tasks/init_ibft.yml
+    - include_tasks: tasks/init-node-config.yml
+    - include_tasks: tasks/init-ibft.yml
       vars:
         NodesNum: 5
-    - include_tasks: tasks/start_ibft.yml
+    - include_tasks: tasks/start-ibft.yml
       vars:
         PrivacyImpl: tessera
 - name: Send transactions
