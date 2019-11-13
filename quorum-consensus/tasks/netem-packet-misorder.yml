@@ -1,0 +1,4 @@
+---
+- name: Action for packet misorder with gap (No delay for packet index % packet_nodelay_index_mod_base=0, others delay with delay_time)
+  shell: "tc qdisc {{ action | default('add') }} dev {{ network_interface | default('eth0') }} root netem gap {{ packet_nodelay_index_mod_base }} delay {{ delay_time }}"
+  become: yes
