@@ -1,0 +1,72 @@
+- name: Display each index's node information
+  hosts: 127.0.0.1
+  tasks:
+    - include_tasks: tasks/debug-node-index.yml
+- name: Consensus provisioning
+  hosts: all
+  vars_files:
+    - vars/common.yml
+  tasks:
+    - include_tasks: tasks/stop-all.yml
+    - include_tasks: tasks/init-node-config.yml
+    - include_tasks: tasks/init-ibft.yml
+      vars:
+        NodesNum: 5
+    - include_tasks: tasks/start-ibft.yml
+      vars:
+        PrivacyImpl: tessera
+- name: Add network delay for node-1
+  hosts: aws_ec2[0]
+  vars_files:
+    - vars/common.yml
+  tasks:
+    - include_tasks: tasks/netem-clear-all.yml
+    - include_tasks: tasks/netem-delay.yml
+      vars: 
+        action: add
+        delay_time: 100ms
+- name: Change network delay with margin for node-1
+  hosts: aws_ec2[0]
+  vars_files:
+    - vars/common.yml
+  tasks:
+    - include_tasks: tasks/netem-delay-with-margin.yml
+      vars:
+        action: change
+        delay_time: 1s
+        margin_time: 100ms
+- name: Add delay with margin probability for node-2
+  hosts: aws_ec2[1]
+  vars_files:
+    - vars/common.yml
+  tasks:
+    - include_tasks: tasks/netem-clear-all.yml
+    - include_tasks: tasks/netem-delay-with-margin-probability.yml
+      vars:
+        action: add
+        delay_time: 500ms
+        margin_time: 50ms
+        probability: 25%
+- name: Delete delay with margin probability for node-2
+  hosts: aws_ec2[1]
+  vars_files:
+    - vars/common.yml
+  tasks:
+    - include_tasks: tasks/netem-delay-with-margin-probability.yml
+      vars:
+        action: delete
+        delay_time: 500ms
+        margin_time: 50ms
+        probability: 25%
+- name: Add delay with margin + normal distrubution for node-2
+  hosts: aws_ec2[1]
+  vars_files:
+    - vars/common.yml
+  tasks:
+    - include_tasks: tasks/netem-clear-all.yml
+    - include_tasks: tasks/netem-delay-with-margin-distrubution.yml
+      vars:
+        action: add
+        delay_time: 500ms
+        margin_time: 50ms
+        distribution_type: normal
