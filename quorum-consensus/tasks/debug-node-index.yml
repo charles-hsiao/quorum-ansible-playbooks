@@ -1,0 +1,7 @@
+---
+- name: Display node index - private IPs
+  debug:
+    msg: "{{ index+1 }} - {{ hostvars[item]['private_ip_address'] }}"
+  loop: "{{ groups['aws_ec2']|flatten(levels=1) }}"
+  loop_control:
+    index_var: index
