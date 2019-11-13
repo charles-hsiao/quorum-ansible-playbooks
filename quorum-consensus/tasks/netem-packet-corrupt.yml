@@ -1,0 +1,4 @@
+---
+- name: Action for packet currupt (Random audit 1 bit in packet)
+  shell: "tc qdisc {{ action | default('add') }} dev {{ network_interface | default('eth0') }} root netem corrupt {{ probability }}"
+  become: yes

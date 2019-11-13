@@ -1,0 +1,4 @@
+---
+- name: Action for network delays
+  shell: "tc qdisc {{ action | default('add') }} dev {{ network_interface | default('eth0') }} root netem delay {{ delay_time }}"
+  become: yes

@@ -1,4 +1,0 @@
----
-- name: Add network delays
-  shell: "tc qdisc add dev ens5 root netem delay {{ delay_time }}"
-  become: yes

@@ -1,0 +1,4 @@
+---
+- name: Action for packet loss
+  shell: "tc qdisc {{ action | default('add') }} dev {{ network_interface | default('eth0') }} root netem loss {{ probability }}"
+  become: yes

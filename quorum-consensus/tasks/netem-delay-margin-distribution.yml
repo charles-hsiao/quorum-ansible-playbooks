@@ -1,0 +1,4 @@
+---
+- name: Action for network delays with margin(dalay_time ± margin_time) base on distribution (uniform | normal | pareto | paretonormal)
+  shell: "tc qdisc {{ action | default('add') }} dev {{ network_interface | default('eth0') }} root netem delay {{ delay_time }} {{ margin_time }} distribution {{ distribution_type }}"
+  become: yes
