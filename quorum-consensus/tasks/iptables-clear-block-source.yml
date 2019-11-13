@@ -1,0 +1,4 @@
+---
+- name: Clear blocking rule from source IP
+  shell: "iptables --delete INPUT --source {{ block_ip }} -j DROP"
+  become: yes
