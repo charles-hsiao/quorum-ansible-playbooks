@@ -1,0 +1,4 @@
+---
+- name: Clear all iptables rules
+  shell: "iptables --flush"
+  become: yes
