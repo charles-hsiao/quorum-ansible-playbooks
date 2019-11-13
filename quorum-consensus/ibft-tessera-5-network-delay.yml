@@ -30,7 +30,7 @@
   vars_files:
     - vars/common.yml
   tasks:
-    - include_tasks: tasks/netem-delay-with-margin.yml
+    - include_tasks: tasks/netem-delay-margin.yml
       vars:
         action: change
         delay_time: 1s
@@ -41,7 +41,7 @@
     - vars/common.yml
   tasks:
     - include_tasks: tasks/netem-clear-all.yml
-    - include_tasks: tasks/netem-delay-with-margin-probability.yml
+    - include_tasks: tasks/netem-delay-margin-probability.yml
       vars:
         action: add
         delay_time: 500ms
@@ -52,7 +52,7 @@
   vars_files:
     - vars/common.yml
   tasks:
-    - include_tasks: tasks/netem-delay-with-margin-probability.yml
+    - include_tasks: tasks/netem-delay-margin-probability.yml
       vars:
         action: delete
         delay_time: 500ms
@@ -64,7 +64,7 @@
     - vars/common.yml
   tasks:
     - include_tasks: tasks/netem-clear-all.yml
-    - include_tasks: tasks/netem-delay-with-margin-distrubution.yml
+    - include_tasks: tasks/netem-delay-margin-distrubution.yml
       vars:
         action: add
         delay_time: 500ms
