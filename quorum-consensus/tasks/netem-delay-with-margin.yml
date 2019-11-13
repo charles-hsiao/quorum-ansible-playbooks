@@ -1,4 +1,4 @@
 ---
-- name: Add network delays with margin(dalay_time ± margin_time)
+- name: Action for network delays with margin(dalay_time ± margin_time)
   shell: "tc qdisc {{ action }} dev {{ network_interface }} root netem delay {{ delay_time }} {{ margin_time }}"
   become: yes
