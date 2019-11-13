@@ -1,2 +1,3 @@
 User: ubuntu
 ProjectDir: "/home/{{ User }}/quorum-experiment/nodes"
+network_interface: ens5 
