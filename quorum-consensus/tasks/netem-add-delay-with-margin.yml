@@ -1,0 +1,4 @@
+---
+- name: Add network delays with margin(dalay_time ± margin_time)
+  shell: "tc qdisc add dev eth0 root netem delay {{ delay_time }} {{ margin_time }}"
+  become: yes
