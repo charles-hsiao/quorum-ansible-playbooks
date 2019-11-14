@@ -1,0 +1,4 @@
+---
+- name: Action for packet misorder with gap (No delay for packet index % packet_nodelay_index_mod_base=0, others delay with delay_time and misorder with certain probability. If correlation_probability=25%, Probn = .25 * Probn-1 + .75 * Random)
+  shell: "tc qdisc {{ action | default('add') }} dev {{ network_interface | default('eth0') }} root netem gap {{ packet_nodelay_index_mod_base }} delay {{ delay_time }} reorder {{ probability }} {{ correlation_probability }}"
+  become: yes
