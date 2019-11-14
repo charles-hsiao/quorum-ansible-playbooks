@@ -64,7 +64,7 @@
     - vars/common.yml
   tasks:
     - include_tasks: tasks/netem-clear-all.yml
-    - include_tasks: tasks/netem-delay-margin-distrubution.yml
+    - include_tasks: tasks/netem-delay-margin-distribution.yml
       vars:
         action: add
         delay_time: 500ms
