@@ -1,4 +1,3 @@
 ---
 - name: Sysbench - CPU loads 
   shell: "sysbench cpu --cpu-max-prime={{ max_prime }} --time={{ time_sec | default(0)}} --threads={{ threads | default(1) }} run"
-  become: yes
