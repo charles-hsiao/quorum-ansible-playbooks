@@ -1,0 +1,12 @@
+- name: Display each index's node information
+  hosts: 127.0.0.1
+  tasks:
+    - include_tasks: tasks/debug-node-index.yml
+- name: Teardown
+  hosts: all
+  vars_files:
+    - vars/common.yml
+  tasks:
+    - include_tasks: tasks/stop-all.yml
+    - include_tasks: tasks/iptables-clear-all.yml
+    - include_tasks: tasks/netem-clear-all.yml
