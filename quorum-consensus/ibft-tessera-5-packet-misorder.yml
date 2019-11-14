@@ -21,7 +21,7 @@
     - vars/common.yml
   tasks:
     - include_tasks: tasks/netem-clear-all.yml
-    - include_tasks: tasks/netem-packet-misorder.yml
+    - include_tasks: tasks/netem-packet-misorder-gap.yml
       vars: 
         action: add
         packet_nodelay_index_mod_base: 5
