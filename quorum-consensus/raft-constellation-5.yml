@@ -7,24 +7,11 @@
   vars_files:
     - vars/common.yml
   tasks:
-    - include_tasks: tasks/stop-all.yml
-    - include_tasks: tasks/init-node-config.yml
-    - include_tasks: tasks/init-raft.yml
+    - include_tasks: tasks/consensus-stop-all.yml
+    - include_tasks: tasks/consensus-node-config-init.yml
+    - include_tasks: tasks/consensus-ibft-init.yml
       vars:
         NodesNum: 5
-    - include_tasks: tasks/start-raft.yml
+    - include_tasks: tasks/consensus-ibft-start.yml
       vars:
         PrivacyImpl: constellation
-- name: Send transactions from node-1
-  hosts: aws_ec2[0]
-  vars_files:
-    - vars/common.yml
-  tasks:
-    - include_tasks: tasks/send-public-events.yml
-    - pause:
-        seconds: 1
-    - include_tasks: tasks/send-private-events.yml
-    - pause:
-        prompt: "Start sending 1000 transactions?"
-    - include_tasks: tasks/send-public-events.yml
-      with_sequence: count=50
