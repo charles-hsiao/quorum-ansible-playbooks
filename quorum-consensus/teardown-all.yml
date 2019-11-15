@@ -7,6 +7,6 @@
   vars_files:
     - vars/common.yml
   tasks:
-    - include_tasks: tasks/stop-all.yml
+    - include_tasks: tasks/consensus-stop-all.yml
     - include_tasks: tasks/iptables-clear-all.yml
     - include_tasks: tasks/netem-clear-all.yml
