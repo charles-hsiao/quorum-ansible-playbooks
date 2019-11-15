@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1573572719252,
+  "iteration": 1573834193565,
   "links": [],
   "panels": [
     {
@@ -122,6 +122,7 @@
         "x": 3,
         "y": 0
       },
+      "hiddenSeries": false,
       "id": 8,
       "legend": {
         "avg": false,
@@ -208,6 +209,7 @@
         "x": 11,
         "y": 0
       },
+      "hiddenSeries": false,
       "id": 14,
       "legend": {
         "avg": false,
@@ -316,7 +318,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "6.4.4",
+      "pluginVersion": "6.5.0-beta1",
       "targets": [
         {
           "expr": "geth_txpool_status_pending{instance=\"$instance\"}",
@@ -428,6 +430,7 @@
         "x": 3,
         "y": 8
       },
+      "hiddenSeries": false,
       "id": 12,
       "legend": {
         "avg": false,
@@ -514,6 +517,7 @@
         "x": 11,
         "y": 8
       },
+      "hiddenSeries": false,
       "id": 17,
       "legend": {
         "avg": false,
@@ -622,7 +626,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "6.4.4",
+      "pluginVersion": "6.5.0-beta1",
       "targets": [
         {
           "expr": "geth_txpool_status_queued{instance=\"$instance\"}",
@@ -735,6 +739,7 @@
         "x": 3,
         "y": 16
       },
+      "hiddenSeries": false,
       "id": 2,
       "legend": {
         "alignAsTable": false,
@@ -827,6 +832,7 @@
         "x": 11,
         "y": 16
       },
+      "hiddenSeries": false,
       "id": 19,
       "legend": {
         "avg": false,
@@ -1000,6 +1006,7 @@
         "x": 0,
         "y": 24
       },
+      "hiddenSeries": false,
       "id": 22,
       "legend": {
         "avg": false,
@@ -1087,6 +1094,7 @@
         "x": 8,
         "y": 24
       },
+      "hiddenSeries": false,
       "id": 24,
       "legend": {
         "avg": false,
@@ -1174,6 +1182,183 @@
         "x": 16,
         "y": 24
       },
+      "hiddenSeries": false,
+      "id": 26,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": true,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "tessera_decrypted_private_transactions{job=\"tessera\"}",
+          "legendFormat": "{{ instance }}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Tessera - Decrypted private transactions",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "decimals": 0,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 0,
+        "y": 31
+      },
+      "hiddenSeries": false,
+      "id": 23,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": true,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "tessera_sent_private_transactions{job=\"tessera\"}",
+          "legendFormat": "{{ instance }}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Tessera - Sent private transactions",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "decimals": 0,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 8,
+        "y": 31
+      },
+      "hiddenSeries": false,
       "id": 25,
       "legend": {
         "avg": false,
@@ -1259,9 +1444,10 @@
         "h": 7,
         "w": 8,
         "x": 0,
-        "y": 31
+        "y": 38
       },
-      "id": 23,
+      "hiddenSeries": false,
+      "id": 27,
       "legend": {
         "avg": false,
         "current": false,
@@ -1287,7 +1473,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "tessera_sent_private_transactions{job=\"tessera\"}",
+          "expr": "constellation_send_private_transactions{job=\"constellation\"}",
           "legendFormat": "{{ instance }}",
           "refId": "A"
         }
@@ -1296,7 +1482,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Tessera - Sent private transactions",
+      "title": "Constellation - Send private transactions",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1345,10 +1531,11 @@
       "gridPos": {
         "h": 7,
         "w": 8,
-        "x": 16,
-        "y": 31
+        "x": 8,
+        "y": 38
       },
-      "id": 26,
+      "hiddenSeries": false,
+      "id": 28,
       "legend": {
         "avg": false,
         "current": false,
@@ -1374,7 +1561,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "tessera_decrypted_private_transactions{job=\"tessera\"}",
+          "expr": "constellation_receive_private_transactions{job=\"constellation\"}",
           "legendFormat": "{{ instance }}",
           "refId": "A"
         }
@@ -1383,7 +1570,183 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Tessera - Decrypted private transactions",
+      "title": "Constellation - Receive private transactions",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "decimals": 0,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 0,
+        "y": 45
+      },
+      "hiddenSeries": false,
+      "id": 29,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": true,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "constellation_decrypted_private_transactions{job=\"constellation\"}",
+          "legendFormat": "{{ instance }}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Constellation - Decrypted private transactions",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "decimals": 0,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 8,
+        "y": 45
+      },
+      "hiddenSeries": false,
+      "id": 30,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": true,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "constellation_decrypt_failed_private_transactions{job=\"constellation\"}",
+          "legendFormat": "{{ instance }}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Constellation - Failed to decrypt private transactions",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1422,7 +1785,7 @@
     }
   ],
   "refresh": "10s",
-  "schemaVersion": 20,
+  "schemaVersion": 21,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -1430,9 +1793,8 @@
       {
         "allValue": null,
         "current": {
-          "tags": [],
-          "text": "10.0.1.154:8000",
-          "value": "10.0.1.154:8000"
+          "text": "10.0.1.115:8000",
+          "value": "10.0.1.115:8000"
         },
         "datasource": "Prometheus",
         "definition": "geth_net_listening{job='block'}",
