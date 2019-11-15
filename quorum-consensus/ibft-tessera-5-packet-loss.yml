@@ -7,12 +7,12 @@
   vars_files:
     - vars/common.yml
   tasks:
-    - include_tasks: tasks/stop-all.yml
-    - include_tasks: tasks/init-node-config.yml
-    - include_tasks: tasks/init-ibft.yml
+    - include_tasks: tasks/consensus-stop-all.yml
+    - include_tasks: tasks/consensus-node-config-init.yml
+    - include_tasks: tasks/consensus-ibft-init.yml
       vars:
         NodesNum: 5
-    - include_tasks: tasks/start-ibft.yml
+    - include_tasks: tasks/consensus-ibft-start.yml
       vars:
         PrivacyImpl: tessera
 - name: Add packet loss for node-1
