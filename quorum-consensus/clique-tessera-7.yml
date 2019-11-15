@@ -15,16 +15,3 @@
     - include_tasks: tasks/consensus-clique-start.yml
       vars:
         PrivacyImpl: tessera
-- name: Send transactions from node-1
-  hosts: aws_ec2[0]
-  vars_files:
-    - vars/common.yml
-  tasks:
-    - include_tasks: tasks/send-public-events.yml
-    - pause:
-        seconds: 1
-    - include_tasks: tasks/send-private-events.yml
-    - pause:
-        prompt: "Start sending 1000 transactions?"
-    - include_tasks: tasks/send-public-events.yml
-      with_sequence: count=50
