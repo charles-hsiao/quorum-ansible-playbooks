@@ -1,0 +1,30 @@
+- name: Display each index's node information
+  hosts: 127.0.0.1
+  tasks:
+    - include_tasks: tasks/debug-node-index.yml
+- name: Consensus provisioning
+  hosts: all
+  vars_files:
+    - vars/common.yml
+  tasks:
+    - include_tasks: tasks/stop-all.yml
+    - include_tasks: tasks/init-node-config.yml
+    - include_tasks: tasks/init-raft.yml
+      vars:
+        NodesNum: 5
+    - include_tasks: tasks/start-raft.yml
+      vars:
+        PrivacyImpl: constellation
+- name: Send transactions from node-1
+  hosts: aws_ec2[0]
+  vars_files:
+    - vars/common.yml
+  tasks:
+    - include_tasks: tasks/send-public-events.yml
+    - pause:
+        seconds: 1
+    - include_tasks: tasks/send-private-events.yml
+    - pause:
+        prompt: "Start sending 1000 transactions?"
+    - include_tasks: tasks/send-public-events.yml
+      with_sequence: count=50
