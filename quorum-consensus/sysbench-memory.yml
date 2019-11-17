@@ -1,0 +1,11 @@
+- name: Burst memory usage for node-1
+  hosts: aws_ec2[0]
+  tasks:
+    - include_tasks: tasks/sysbench-memory.yml
+      vars:
+        block_size: 8K
+        total_size: 200G
+        operation: write
+        access_mode: rnd
+        scope: global
+        threads: 2
