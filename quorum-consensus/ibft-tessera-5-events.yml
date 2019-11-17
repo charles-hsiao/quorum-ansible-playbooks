@@ -22,7 +22,7 @@
   tasks:
     - include_tasks: tasks/txn-send-public-events.yml
     - pause:
-        seconds: 1
+        seconds: 10
     - include_tasks: tasks/txn-send-private-events.yml
     - pause:
         prompt: "Start sending 1000 transactions?"

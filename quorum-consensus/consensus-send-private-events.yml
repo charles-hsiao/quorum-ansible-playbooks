@@ -1,0 +1,6 @@
+- name: Send transactions from node-1
+  hosts: aws_ec2[0]
+  vars_files:
+    - vars/common.yml
+  tasks:
+    - include_tasks: tasks/txn-send-private-events.yml
