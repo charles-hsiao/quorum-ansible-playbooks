@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1573985333657,
+  "iteration": 1573986582018,
   "links": [],
   "panels": [
     {
@@ -469,16 +469,19 @@
     "list": [
       {
         "allValue": null,
-        "current": {},
-        "datasource": "${DS_PROMETHEUS}",
-        "definition": "geth_net_listening{job='block'}",
+        "current": {
+          "text": "10.0.1.11",
+          "value": "10.0.1.11"
+        },
+        "datasource": "Prometheus",
+        "definition": "geth_net_listening{job=\"block\"}",
         "hide": 0,
         "includeAll": false,
         "label": "Instance",
         "multi": false,
         "name": "instance",
         "options": [],
-        "query": "geth_net_listening{job='block'}",
+        "query": "geth_net_listening{job=\"block\"}",
         "refresh": 1,
         "regex": "/.*instance=\\\"([^\\\"]*).*/",
         "skipUrlSync": false,
