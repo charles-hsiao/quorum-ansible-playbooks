@@ -11,7 +11,7 @@
     - include_tasks: tasks/consensus-node-config-init.yml
     - include_tasks: tasks/consensus-clique-init.yml
       vars:
-        NodesNum: 7
+        NodesNum: 5
     - include_tasks: tasks/consensus-clique-start.yml
       vars:
-        PrivacyImpl: constellation
+        PrivacyImpl: tessera
