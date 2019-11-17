@@ -181,7 +181,7 @@
           "decimals": 2,
           "link": true,
           "linkTooltip": "Drill down to single node",
-          "linkUrl": "d/LA-iCqJWz/block-exporter-single-node?orgId=1&var-instance=$__cell",
+          "linkUrl": "d/LA-iCqJWt/block-exporter-single-node?orgId=1&var-instance=$__cell",
           "mappingType": 1,
           "pattern": "instance",
           "thresholds": [],
@@ -295,7 +295,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Overview",
+      "title": "Nodes Overview",
       "transform": "table",
       "type": "table"
     },
