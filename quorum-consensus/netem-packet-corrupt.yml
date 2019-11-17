@@ -1,0 +1,10 @@
+- name: Add packet corrupt for node-1
+  hosts: aws_ec2[0]
+  vars_files:
+    - vars/common.yml
+  tasks:
+    - include_tasks: tasks/netem-clear-all.yml
+    - include_tasks: tasks/netem-packet-corrupt.yml
+      vars: 
+        action: add
+        probability: 0.1%
