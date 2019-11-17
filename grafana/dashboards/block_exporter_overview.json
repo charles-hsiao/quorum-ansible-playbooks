@@ -60,22 +60,6 @@
           "unit": "short"
         },
         {
-          "alias": "",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 2,
-          "mappingType": 1,
-          "pattern": "job",
-          "thresholds": [],
-          "type": "hidden",
-          "unit": "short"
-        },
-        {
           "alias": "Geth Connected",
           "colorMode": "cell",
           "colors": [
@@ -203,6 +187,22 @@
           "thresholds": [],
           "type": "number",
           "unit": "none"
+        },
+        {
+          "alias": "Received Private txs",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "Value #G",
+          "thresholds": [],
+          "type": "number",
+          "unit": "none"
         }
       ],
       "targets": [
@@ -247,6 +247,16 @@
           "instant": true,
           "legendFormat": "{{ instance }}",
           "refId": "F"
+        },
+        {
+          "expr": "sum(tessera_receive_private_transactions{job=\"tessera\"} or constellation_receive_private_transactions{job=\"constellation\"}) by (instance)",
+          "format": "table",
+          "instant": true,
+          "refId": "G"
+        },
+        {
+          "expr": "sum(tessera_decrypted_private_transactions{job=\"tessera\"} or constellation_decrypted_private_transactions{job=\"constellation\"}) by (instance)",
+          "refId": "H"
         }
       ],
       "timeFrom": null,
