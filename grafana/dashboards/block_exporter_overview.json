@@ -300,93 +300,174 @@
       "type": "table"
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
       "datasource": null,
       "decimals": 0,
-      "fill": 1,
-      "fillGradient": 0,
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
       "gridPos": {
         "h": 7,
-        "w": 12,
+        "w": 3,
         "x": 0,
         "y": 10
       },
-      "hiddenSeries": false,
-      "id": 8,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
+      "id": 42,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
       },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 2,
-      "points": true,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "tableColumn": "",
       "targets": [
         {
-          "expr": "geth_net_listening{job=\"block\"}",
-          "legendFormat": "{{ instance }}",
+          "expr": "max(geth_latest_block{job=\"block\"})",
+          "instant": true,
+          "legendFormat": "",
           "refId": "A"
         }
       ],
-      "thresholds": [],
+      "thresholds": "",
       "timeFrom": null,
-      "timeRegions": [],
       "timeShift": null,
-      "title": "Geth Network Connected",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
+      "title": "Latest Block Number",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
         {
-          "decimals": 0,
-          "format": "short",
-          "label": "",
-          "logBase": 1,
-          "max": "1",
-          "min": "0",
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
         }
       ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      "valueName": "max"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "gridPos": {
+        "h": 7,
+        "w": 9,
+        "x": 3,
+        "y": 10
+      },
+      "id": 43,
+      "links": [],
+      "options": {
+        "displayMode": "lcd",
+        "fieldOptions": {
+          "calcs": [
+            "last"
+          ],
+          "defaults": {
+            "links": [],
+            "mappings": [
+              {
+                "from": "",
+                "id": 1,
+                "operator": "",
+                "text": "",
+                "to": "",
+                "type": 1,
+                "value": ""
+              }
+            ],
+            "max": 50,
+            "min": 0,
+            "thresholds": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 40
+              }
+            ],
+            "unit": "cpm"
+          },
+          "override": {},
+          "values": false
+        },
+        "orientation": "vertical"
+      },
+      "pluginVersion": "6.5.0-beta1",
+      "targets": [
+        {
+          "expr": "max(rate(geth_latest_block{job=\"block\"}[1m]))*60",
+          "format": "time_series",
+          "instant": true,
+          "legendFormat": "1 min",
+          "refId": "A"
+        },
+        {
+          "expr": "max(rate(geth_latest_block{job=\"block\"}[5m]))*60",
+          "format": "time_series",
+          "instant": true,
+          "legendFormat": "5 mins",
+          "refId": "B"
+        },
+        {
+          "expr": "max(rate(geth_latest_block{job=\"block\"}[10m]))*60",
+          "format": "time_series",
+          "instant": true,
+          "legendFormat": "10 mins",
+          "refId": "C"
+        },
+        {
+          "expr": "max(rate(geth_latest_block{job=\"block\"}[10m]))*60",
+          "instant": true,
+          "legendFormat": "15 mins",
+          "refId": "D"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Block Latency (Block/min)",
+      "type": "bargauge"
     },
     {
       "aliasColors": {},
@@ -483,93 +564,175 @@
       }
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
       "datasource": null,
       "decimals": 0,
-      "fill": 1,
-      "fillGradient": 0,
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
       "gridPos": {
         "h": 7,
-        "w": 12,
+        "w": 3,
         "x": 0,
         "y": 17
       },
-      "hiddenSeries": false,
-      "id": 12,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
+      "id": 44,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
       },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 2,
-      "points": true,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "tableColumn": "",
       "targets": [
         {
-          "expr": "geth_net_peer_count{job='block'}",
-          "legendFormat": "{{ instance }}",
+          "expr": "max(geth_transaction_processed{job=\"block\"})",
+          "instant": true,
+          "legendFormat": "",
           "refId": "A"
         }
       ],
-      "thresholds": [],
+      "thresholds": "",
       "timeFrom": null,
-      "timeRegions": [],
       "timeShift": null,
-      "title": "Node Peer Count",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
+      "title": "Max Transaction Processed",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
         {
-          "decimals": 0,
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
         }
       ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      "valueName": "max"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "gridPos": {
+        "h": 7,
+        "w": 9,
+        "x": 3,
+        "y": 17
+      },
+      "id": 45,
+      "links": [],
+      "options": {
+        "displayMode": "lcd",
+        "fieldOptions": {
+          "calcs": [
+            "last"
+          ],
+          "defaults": {
+            "links": [],
+            "mappings": [
+              {
+                "from": "",
+                "id": 1,
+                "operator": "",
+                "text": "",
+                "to": "",
+                "type": 1,
+                "value": ""
+              }
+            ],
+            "max": 100,
+            "min": 0,
+            "thresholds": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ],
+            "unit": "cps"
+          },
+          "override": {},
+          "values": false
+        },
+        "orientation": "vertical"
+      },
+      "pluginVersion": "6.5.0-beta1",
+      "targets": [
+        {
+          "expr": "max(rate(geth_transaction_processed{job=\"block\"}[1m])) ",
+          "format": "time_series",
+          "instant": true,
+          "legendFormat": "1 min",
+          "refId": "A"
+        },
+        {
+          "expr": "max(rate(geth_transaction_processed{job=\"block\"}[5m])) ",
+          "format": "time_series",
+          "instant": true,
+          "legendFormat": "5 mins",
+          "refId": "B"
+        },
+        {
+          "expr": "max(rate(geth_transaction_processed{job=\"block\"}[10m])) ",
+          "format": "time_series",
+          "instant": true,
+          "legendFormat": "10 mins ",
+          "refId": "C"
+        },
+        {
+          "expr": "max(rate(geth_transaction_processed{job=\"block\"}[15m])) ",
+          "format": "time_series",
+          "instant": true,
+          "legendFormat": "15 mins ",
+          "refId": "D"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "TPS (txs/sec)",
+      "type": "bargauge"
     },
     {
       "aliasColors": {},
@@ -665,6 +828,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
+      "decimals": 0,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -674,7 +838,7 @@
         "y": 24
       },
       "hiddenSeries": false,
-      "id": 17,
+      "id": 8,
       "legend": {
         "avg": false,
         "current": false,
@@ -700,7 +864,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "geth_txpool_status_queued{job='block'}",
+          "expr": "geth_net_listening{job=\"block\"}",
           "legendFormat": "{{ instance }}",
           "refId": "A"
         }
@@ -709,7 +873,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Queued Transactions",
+      "title": "Geth Network Connected",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -726,15 +890,15 @@
       "yaxes": [
         {
           "decimals": 0,
-          "format": "none",
-          "label": null,
+          "format": "short",
+          "label": "",
           "logBase": 1,
-          "max": null,
+          "max": "1",
           "min": "0",
           "show": true
         },
         {
-          "format": "none",
+          "format": "short",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -841,6 +1005,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
+      "decimals": 0,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
@@ -848,6 +1013,182 @@
         "w": 12,
         "x": 0,
         "y": 31
+      },
+      "hiddenSeries": false,
+      "id": 12,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": true,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "geth_net_peer_count{job='block'}",
+          "legendFormat": "{{ instance }}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Node Peer Count",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 0,
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 31
+      },
+      "hiddenSeries": false,
+      "id": 17,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": true,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "geth_txpool_status_queued{job='block'}",
+          "legendFormat": "{{ instance }}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Queued Transactions",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 0,
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "none",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 38
       },
       "hiddenSeries": false,
       "id": 40,
@@ -935,7 +1276,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 31
+        "y": 38
       },
       "hiddenSeries": false,
       "id": 39,
@@ -1018,7 +1359,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 38
+        "y": 45
       },
       "id": 36,
       "panels": [
@@ -1483,7 +1824,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 39
+        "y": 46
       },
       "id": 34,
       "panels": [
