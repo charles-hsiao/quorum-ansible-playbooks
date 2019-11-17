@@ -198,12 +198,12 @@
             "rgba(50, 172, 45, 0.97)"
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 0,
+          "decimals": 2,
           "mappingType": 1,
           "pattern": "Value #F",
           "thresholds": [],
           "type": "number",
-          "unit": "none"
+          "unit": "short"
         },
         {
           "alias": "Received Private txs",
@@ -214,12 +214,12 @@
             "rgba(50, 172, 45, 0.97)"
           ],
           "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "decimals": 0,
+          "decimals": 2,
           "mappingType": 1,
-          "pattern": "Value #G",
+          "pattern": "Value #H",
           "thresholds": [],
           "type": "number",
-          "unit": "none"
+          "unit": "short"
         }
       ],
       "targets": [
@@ -266,13 +266,9 @@
           "refId": "F"
         },
         {
-          "expr": "sum(tessera_receive_private_transactions{job=\"tessera\"} or constellation_receive_private_transactions{job=\"constellation\"}) by (instance)",
+          "expr": "sum(tessera_decrypted_private_transactions{job=\"tessera\"} or constellation_decrypted_private_transactions{job=\"constellation\"}) by (instance)",
           "format": "table",
           "instant": true,
-          "refId": "G"
-        },
-        {
-          "expr": "sum(tessera_decrypted_private_transactions{job=\"tessera\"} or constellation_decrypted_private_transactions{job=\"constellation\"}) by (instance)",
           "refId": "H"
         }
       ],
