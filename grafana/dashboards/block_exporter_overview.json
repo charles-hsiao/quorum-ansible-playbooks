@@ -15,7 +15,6 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1573966269452,
   "links": [],
   "panels": [
     {
@@ -182,7 +181,7 @@
           "decimals": 2,
           "link": true,
           "linkTooltip": "Drill down to single node",
-          "linkUrl": "http://34.216.99.33:3000/d/LA-iCqJWz/block-exporter-single-node?orgId=1&var-instance=$__cell",
+          "linkUrl": "d/LA-iCqJWz/block-exporter-single-node?orgId=1&var-instance=$__cell",
           "mappingType": 1,
           "pattern": "instance",
           "thresholds": [],
