@@ -27,18 +27,34 @@ scrape_configs:
       - access_key: {{ aws_key }}
         secret_key: {{ aws_secret }}
         port: 9100
+    relabel_configs:
+    - source_labels: [__address__]
+      regex: "([^:]+):\\d+"
+      target_label: instance
   - job_name: 'block'
     ec2_sd_configs:
       - access_key: {{ aws_key }}
         secret_key: {{ aws_secret }}
         port: 8000
+    relabel_configs:
+    - source_labels: [__address__]
+      regex: "([^:]+):\\d+"
+      target_label: instance
   - job_name: 'tessera'
     ec2_sd_configs:
       - access_key: {{ aws_key }}
         secret_key: {{ aws_secret }}
         port: 8001
+    relabel_configs:
+    - source_labels: [__address__]
+      regex: "([^:]+):\\d+"
+      target_label: instance
   - job_name: 'constellation'
     ec2_sd_configs:
       - access_key: {{ aws_key }}
         secret_key: {{ aws_secret }}
         port: 8002
+    relabel_configs:
+    - source_labels: [__address__]
+      regex: "([^:]+):\\d+"
+      target_label: instance
