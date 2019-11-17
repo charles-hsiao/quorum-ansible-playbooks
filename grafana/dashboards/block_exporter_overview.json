@@ -76,9 +76,9 @@
           "alias": "Geth Connected",
           "colorMode": "cell",
           "colors": [
-            "rgba(50, 172, 45, 0.97)",
+            "rgba(245, 54, 54, 0.9)",
             "rgba(237, 129, 40, 0.89)",
-            "rgba(245, 54, 54, 0.9)"
+            "rgba(50, 172, 45, 0.97)"
           ],
           "decimals": 0,
           "link": false,
@@ -87,7 +87,8 @@
           "preserveFormat": false,
           "sanitize": false,
           "thresholds": [
-            "2"
+            "1.1",
+            "1"
           ],
           "type": "string",
           "unit": "short",
