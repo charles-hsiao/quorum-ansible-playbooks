@@ -46,8 +46,8 @@
       "pageSize": null,
       "showHeader": true,
       "sort": {
-        "col": 1,
-        "desc": true
+        "col": 2,
+        "desc": false
       },
       "styles": [
         {
@@ -219,9 +219,31 @@
           "thresholds": [],
           "type": "number",
           "unit": "none"
+        },
+        {
+          "alias": "Node Index",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "Value #G",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
         }
       ],
       "targets": [
+        {
+          "expr": "sum(geth_node_index{job=\"block\"}) by (instance)",
+          "format": "table",
+          "instant": true,
+          "refId": "G"
+        },
         {
           "expr": "sum(geth_net_listening{job=\"block\"}) by (instance)",
           "format": "table",
