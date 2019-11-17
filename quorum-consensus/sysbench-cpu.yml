@@ -1,0 +1,8 @@
+- name: Burst CPU usage for node-1
+  hosts: aws_ec2[0]
+  tasks:
+    - include_tasks: tasks/sysbench-cpu.yml
+      vars: 
+        max_prime: 20000
+        time_sec: 60
+        threads: 2

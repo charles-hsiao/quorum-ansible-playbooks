@@ -1,0 +1,11 @@
+- name: Add network rate control on node-1
+  hosts: aws_ec2[0]
+  vars_files:
+    - vars/common.yml
+  tasks:
+    - include_tasks: tasks/netem-clear-all.yml
+    - include_tasks: tasks/netem-network-rate-control.yml
+      vars: 
+        action: add
+        delay_time: 100ms
+        network_rate_limit: 256kbit

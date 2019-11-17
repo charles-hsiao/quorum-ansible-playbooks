@@ -1,20 +1,3 @@
-- name: Display each index's node information
-  hosts: 127.0.0.1
-  tasks:
-    - include_tasks: tasks/debug-node-index.yml
-- name: Consensus provisioning
-  hosts: all
-  vars_files:
-    - vars/common.yml
-  tasks:
-    - include_tasks: tasks/consensus-stop-all.yml
-    - include_tasks: tasks/consensus-node-config-init.yml
-    - include_tasks: tasks/consensus-ibft-init.yml
-      vars:
-        NodesNum: 5
-    - include_tasks: tasks/consensus-ibft-start.yml
-      vars:
-        PrivacyImpl: tessera
 - name: Add packet loss for node-1
   hosts: aws_ec2[0]
   vars_files:
