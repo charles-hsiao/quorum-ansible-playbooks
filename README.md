@@ -22,10 +22,11 @@ Init node config (Must run before run consensus)
 ```
 
 Consensus common variable
-| Variables | Description | Optional values | Default values | Required |
-| --------- | ----------- | --------------- | -------------- | -------- |
-| NodeNum | Volume of Quorum nodes | 1~7 | - | True |
-| PrivacyImpl | Privacy implementation | tessera <br> tessera-remote <br> constellation | - | True |
+
+Variables | Description | Optional values | Default values | Required
+---------- | ----------- | --------------- | -------------- | --------
+NodeNum | Volume of Quorum nodes | 1~7 | - | True
+PrivacyImpl | Privacy implementation | tessera <br> tessera-remote <br> constellation | - | True
 
 Consensus - Clique
 ```
