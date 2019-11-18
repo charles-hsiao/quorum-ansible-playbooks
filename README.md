@@ -21,10 +21,10 @@
 - include_tasks: tasks/consensus-node-config-init.yml
 ```
 
-#### Consensus common variable
+#### Consensus common variables
 
 Variables | Description | Optional values | Default values | Required
----------- | ----------- | --------------- | -------------- | --------
+--------- | ----------- | --------------- | -------------- | --------
 NodeNum | Volume of Quorum nodes | 1~7 | - | True
 PrivacyImpl | Privacy implementation | tessera <br> tessera-remote <br> constellation | - | True
 
@@ -73,7 +73,28 @@ PrivacyImpl | Privacy implementation | tessera <br> tessera-remote <br> constell
 - include_tasks: tasks/consensus-stop-all.yml
 ```
 
-### Benchmarking
+### Network Connectivity - iptables
 
-#### 
+#### iptables common variables
+Variables | Description | Optional values | Default values | Required
+--------- | ----------- | --------------- | -------------- | --------
+TargetIP | IP to block or clear block rule | - | - | True 
 
+#### iptables - Block source IP
+```
+- include_tasks: tasks/iptables-block-source.yml
+  vars:
+    block_ip: ${TargetIP}
+``` 
+
+#### iptables - Clear block source IP
+```
+- include_tasks: tasks/iptables-clear-block-source.yml
+  vars:
+    block_ip: ${TargetIP}
+```
+
+#### iptables - Clear all rules
+```
+- include_tasks: tasks/iptables-clear-all.yml
+```
