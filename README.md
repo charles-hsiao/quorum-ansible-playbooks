@@ -222,4 +222,53 @@ NetworkRateLimit | Network rate limit, input in speed unit, ex: 256kbit | - | - 
     network_interface: ${NetworkInterface}
 ```
 
+### Benchmarking - sysbench
+
+#### Common variables
+Variables | Description | Optional values | Default values | Required
+--------- | ----------- | --------------- | -------------- | --------
+max_prime | Max prime to calculate while CPU load test | - | - | True
+time_sec | Max time in seconds for CPU load test | - | 0 | False
+threads | Threads to do load test | - | 1 | False
+block_size | Memory/File block size | - | 1K/16K | False
+total_size | Memory/File total size | - | 100G/2G | False
+operation | Memory test mechanism | read <br> write | write | False
+access_mode | Memory access with sequence(seq) or random(rnd) | seq <br> rnd | seq | False
+scope | Scope to execute memory load test | global <br> local | global | False
+file_num | File volume to generate | - | 128 | False
+test_mode | File I/O test mode | - | seqwr <br> seqrewr <br> seqrd <br> rndrd <br> rndwr <br> rndrw | False
+rw_ratio | File I/O ratio(Read/Write) | - | 1.5 | False
+
+#### CPU
+```
+- include_tasks: tasks/sysbench-cpu.yml
+  vars:
+    max_prime: ${max_prime}
+    time_sec: ${time_sec}
+    threads: ${threads}
+```
+
+#### Memory
+```
+- include_tasks: tasks/sysbench-memory.yml
+  vars:
+    block_size: ${block_size}
+    total_size: ${total_size}
+    operation: ${operation}
+    access_mode: ${access_mod}
+    scope: ${scope}
+    threads: ${threads}
+```
+
+#### File I/O
+```
+- include_tasks: tasks/sysbench-fileio.yml
+  vars:
+    file_num: ${file_num}
+    block_size: ${block_size}
+    total_size: ${total_size}
+    test_mode: ${test_mode}
+    rw_ratio: ${rw_ratio}
+    threads: ${threads}
+```
 
