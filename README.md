@@ -58,9 +58,22 @@ PrivacyImpl | Privacy implementation | tessera <br> tessera-remote <br> constell
     PrivacyImpl: ${PrivacyImpl}
 ```
 
+#### Send 20 public events
+```
+- include_tasks: tasks/txn-send-public-events.yml
+```
+
+#### Send 20 private events
+```
+- include_tasks: tasks/txn-send-private-events.yml
+```
+
 #### Stop all consensus
 ```
 - include_tasks: tasks/consensus-stop-all.yml
 ```
 
-### Tasks supported
+### Benchmarking
+
+#### 
+
