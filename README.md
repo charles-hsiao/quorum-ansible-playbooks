@@ -16,19 +16,19 @@
 
 ### Consensus
 
-Init node config (Must run before run consensus)
+#### Init node config (Must run before run consensus)
 ```
 - include_tasks: tasks/consensus-node-config-init.yml
 ```
 
-Consensus common variable
+#### Consensus common variable
 
 Variables | Description | Optional values | Default values | Required
 ---------- | ----------- | --------------- | -------------- | --------
 NodeNum | Volume of Quorum nodes | 1~7 | - | True
 PrivacyImpl | Privacy implementation | tessera <br> tessera-remote <br> constellation | - | True
 
-Consensus - Clique
+#### Consensus - Clique
 ```
 - include_tasks: tasks/consensus-clique-init.yml
   vars:
@@ -38,7 +38,7 @@ Consensus - Clique
     PrivacyImpl: ${PrivacyImpl}
 ```
 
-Consensus - IBFT
+#### Consensus - IBFT
 ```
 - include_tasks: tasks/consensus-ibft-init.yml
   vars:
@@ -48,7 +48,7 @@ Consensus - IBFT
     PrivacyImpl: ${PrivacyImpl}
 ```
 
-Consensus - Raft
+#### Consensus - Raft
 ```
 - include_tasks: tasks/consensus-ibft-init.yml
   vars:
@@ -58,7 +58,7 @@ Consensus - Raft
     PrivacyImpl: ${PrivacyImpl}
 ```
 
-Stop all consensus
+#### Stop all consensus
 ```
 - include_tasks: tasks/consensus-stop-all.yml
 ```
