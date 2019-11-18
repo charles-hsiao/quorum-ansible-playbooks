@@ -78,20 +78,20 @@ PrivacyImpl | Privacy implementation | tessera <br> tessera-remote <br> constell
 #### iptables common variables
 Variables | Description | Optional values | Default values | Required
 --------- | ----------- | --------------- | -------------- | --------
-TargetIP | IP to block or clear block rule | - | - | True 
+block_ip | IP to block or clear block rule | - | - | True 
 
 #### iptables - Block source IP
 ```
 - include_tasks: tasks/iptables-block-source.yml
   vars:
-    block_ip: ${TargetIP}
+    block_ip: ${block_ip}
 ``` 
 
 #### iptables - Clear block source IP
 ```
 - include_tasks: tasks/iptables-clear-block-source.yml
   vars:
-    block_ip: ${TargetIP}
+    block_ip: ${block_ip}
 ```
 
 #### iptables - Clear all rules
@@ -104,122 +104,171 @@ TargetIP | IP to block or clear block rule | - | - | True
 #### netem common variables
 Variables | Description | Optional values | Default values | Required
 --------- | ----------- | --------------- | -------------- | --------
-Action | Action for netem command | add <br> delete <br> change | add | False
-NetworkInterface | Network interface to set-up | - | eth0 | False
-DelayTime | Delay time, input with time unit, ex: 100ms | - | - | True
-MarginTime | Delay time with margin, Delay=${DelayTime} ± ${MarginTime}, input with time unit, ex: 100ms | - | - | True
-Probability | (1)Delay time with margin/(2)Packet corrupt/(3)Packet loss/(4)Packet misorder base on the given probability, input probability with %, ex: 25% | - | - | True 
-DistributionType | Delay time with margin distribution | uniform <br> normal <br> pareto <br> paretonormal | - | True
-CorrelationProbability | The correlation probability (If correlation_probability=25%, Probn=0.25*Probn-1 + 0.75*Random) | - | - | True
-NoDelayIndexModBase | No delay for packet index % ${NoDelayIndexModBase}=0, others delay with ${DelayTime} and misorder with certain probability | - | - | True
-NetworkRateLimit | Network rate limit, input in speed unit, ex: 256kbit | - | - | True
+action | action for netem command | add <br> delete <br> change | add | False
+network_interface | Network interface to set-up | - | eth0 | False
+delay_time | Delay time, input with time unit, ex: 100ms | - | - | True
+margin_time | Delay time with margin, Delay=${delay_time} ± ${margin_time}, input with time unit, ex: 100ms | - | - | True
+probability | (1)Delay time with margin/(2)Packet corrupt/(3)Packet loss/(4)Packet misorder base on the given probability, input probability with %, ex: 25% | - | - | True 
+distribution_type | Delay time with margin distribution | uniform <br> normal <br> pareto <br> paretonormal | - | True
+correlation_probability | The correlation probability (If correlation_probability=25%, Probn=0.25*Probn-1 + 0.75*Random) | - | - | True
+no_delay_index_mod_base | No delay for packet index % ${no_delay_index_mod_base}=0, others delay with ${delay_time} and misorder with certain probability | - | - | True
+network_rate_limit | Network rate limit, input in speed unit, ex: 256kbit | - | - | True
 
 #### netem - Delay with specific time
 ```
 - include_tasks: tasks/netem-delay.yml
   vars:
-    action: ${Action}
-    network_interface: ${NetworkInterface}
-    delay_time: ${DelayTime}
+    action: ${action}
+    network_interface: ${network_interface}
+    delay_time: ${delay_time}
 ```
 
 #### netem - Delay with margin
 ```
 - include_tasks: tasks/netem-delay-margin.yml
   vars:
-    action: ${Action}
-    network_interface: ${NetworkInterface}
-    delay_time: ${DelayTime}
-    margin_time: ${MarginTime}
+    action: ${action}
+    network_interface: ${network_interface}
+    delay_time: ${delay_time}
+    margin_time: ${margin_time}
 ```
 
 #### netem - Delay with margin probability
 ```
 - include_tasks: tasks/netem-delay-margin-probability.yml
   vars:
-    action: ${Action}
-    network_interface: ${NetworkInterface}
-    delay_time: ${DelayTime}
-    margin_time: ${MarginTime}
-    probability: ${Probability}
+    action: ${action}
+    network_interface: ${network_interface}
+    delay_time: ${delay_time}
+    margin_time: ${margin_time}
+    probability: ${probability}
 ```
 
 #### netem - Delay with margin distrubution
 ```
 - include_tasks: tasks/netem-delay-margin-distribution.yml
   vars:
-    action: ${Action}
-    network_interface: ${NetworkInterface}
-    delay_time: ${DelayTime}
-    margin_time: ${MarginTime}
-    distribution_type: ${DistributionType}
+    action: ${action}
+    network_interface: ${network_interface}
+    delay_time: ${delay_time}
+    margin_time: ${margin_time}
+    distribution_type: ${distribution_type}
 ```
 
 #### netem - Packet corrupt
 ```
 - include_tasks: tasks/netem-packet-corrupt.yml
   vars:
-    action: ${Action}
-    network_interface: ${NetworkInterface}
-    probability: ${Probability}
+    action: ${action}
+    network_interface: ${network_interface}
+    probability: ${probability}
 ```
 
 #### netem - Packet loss
 ```
 - include_tasks: tasks/netem-packet-loss.yml
   vars:
-    action: ${Action}
-    network_interface: ${NetworkInterface}
-    probability: ${Probability}
+    action: ${action}
+    network_interface: ${network_interface}
+    probability: ${probability}
 ```
 
 #### netem - Packet loss with burst
 ```
 - include_tasks: tasks/netem-packet-loss-burst.yml
   vars:
-    action: ${Action}
-    network_interface: ${NetworkInterface}
-    probability: ${Probability}
-    correlation_probability: ${CorrelationProbability}
+    action: ${action}
+    network_interface: ${network_interface}
+    probability: ${probability}
+    correlation_probability: ${correlation_probability}
 ```
 
 #### netem - Packet misorder with specific gap
 ```
 - include_tasks: tasks/netem-packet-misorder-gap.yml
   vars:
-    action: ${Action}
-    network_interface: ${NetworkInterface}
-    packet_nodelay_index_mod_base: ${NoDelayIndexModBase}
-    delay_time: ${DelayTime}
-    probability: ${Probability}
-    correlation_probability: ${CorrelationProbability}
+    action: ${action}
+    network_interface: ${network_interface}
+    packet_nodelay_index_mod_base: ${no_delay_index_mod_base}
+    delay_time: ${delay_time}
+    probability: ${probability}
+    correlation_probability: ${correlation_probability}
 ```
 
 #### netem - Packet misorder with probability
 ```
 - include_tasks: tasks/netem-packet-misorder-probability.yml
   vars:
-    action: ${Action}
-    network_interface: ${NetworkInterface}
-    probability: ${Probability}
-    correlation_probability: ${CorrelationProbability}
+    action: ${action}
+    network_interface: ${network_interface}
+    probability: ${probability}
+    correlation_probability: ${correlation_probability}
 ```
 
 #### netem - Network rate limit control
 ```
 - include_tasks: tasks/netem-network-rate-control.yml
   vars:
-    action: ${Action}
-    network_interface: ${NetworkInterface}
-    delay_time: ${DelayTime}
-    network_rate_limit: ${NetworkRateLimit}
+    action: ${action}
+    network_interface: ${network_interface}
+    delay_time: ${delay_time}
+    network_rate_limit: ${network_rate_limit}
 ```
 
 #### netem - Clear all
 ```
 - include_tasks: tasks/netem-clear-all.yml
   vars:
-    network_interface: ${NetworkInterface}
+    network_interface: ${network_interface}
 ```
 
+### Benchmarking - sysbench
+
+#### Common variables
+Variables | Description | Optional values | Default values | Required
+--------- | ----------- | --------------- | -------------- | --------
+max_prime | Max prime to calculate while CPU load test | - | - | True
+time_sec | Max time in seconds for CPU load test | - | 0 | False
+threads | Threads to do load test | - | 1 | False
+block_size | Memory/File block size | - | 1K/16K | False
+total_size | Memory/File total size | - | 100G/2G | False
+operation | Memory test mechanism | read <br> write | write | False
+access_mode | Memory access with sequence(seq) or random(rnd) | seq <br> rnd | seq | False
+scope | Scope to execute memory load test | global <br> local | global | False
+file_num | File volume to generate | - | 128 | False
+test_mode | File I/O test mode | - | seqwr <br> seqrewr <br> seqrd <br> rndrd <br> rndwr <br> rndrw | False
+rw_ratio | File I/O ratio(Read/Write) | - | 1.5 | False
+
+#### CPU
+```
+- include_tasks: tasks/sysbench-cpu.yml
+  vars:
+    max_prime: ${max_prime}
+    time_sec: ${time_sec}
+    threads: ${threads}
+```
+
+#### Memory
+```
+- include_tasks: tasks/sysbench-memory.yml
+  vars:
+    block_size: ${block_size}
+    total_size: ${total_size}
+    operation: ${operation}
+    access_mode: ${access_mod}
+    scope: ${scope}
+    threads: ${threads}
+```
+
+#### File I/O
+```
+- include_tasks: tasks/sysbench-fileio.yml
+  vars:
+    file_num: ${file_num}
+    block_size: ${block_size}
+    total_size: ${total_size}
+    test_mode: ${test_mode}
+    rw_ratio: ${rw_ratio}
+    threads: ${threads}
+```
 
