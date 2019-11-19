@@ -1,0 +1,9 @@
+- name: Stop geth consensus mining
+  hosts: aws_ec2[0]
+  vars_files:
+    - vars/common.yml
+  tasks:
+    - include_tasks: tasks/consensus-mining-stop.yml
+    - pause:
+        prompt: "Do you want to recover mining?"
+    - include_tasks: tasks/consensus-mining-start.yml
