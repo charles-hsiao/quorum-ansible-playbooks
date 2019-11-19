@@ -1,0 +1,4 @@
+---
+- name: Restart Block Exporter
+  shell: "monit restart block_exporter"
+  become: yes
