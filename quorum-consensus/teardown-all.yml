@@ -10,3 +10,4 @@
     - include_tasks: tasks/consensus-stop-all.yml
     - include_tasks: tasks/iptables-clear-all.yml
     - include_tasks: tasks/netem-clear-all.yml
+    - include_tasks: tasks/monit-block-exporter-restart.yml
