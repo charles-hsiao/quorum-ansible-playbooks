@@ -1,5 +1,5 @@
 - name: Stop geth consensus mining
-  hosts: aws_ec2[0]
+  hosts: all
   vars_files:
     - vars/common.yml
   tasks:
