@@ -1,0 +1,3 @@
+---
+- name: Stop mining for consensus
+  shell: "cd {{ ProjectDir }}/qdata/dd && geth --exec 'miner.stop()' attach qdata/dd/geth.ipc"
