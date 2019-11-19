@@ -9,9 +9,9 @@
   tasks:
     - include_tasks: tasks/consensus-stop-all.yml
     - include_tasks: tasks/consensus-node-config-init.yml
-    - include_tasks: tasks/consensus-ibft-init.yml
+    - include_tasks: tasks/consensus-raft-init.yml
       vars:
         NodesNum: 5
-    - include_tasks: tasks/consensus-ibft-start.yml
+    - include_tasks: tasks/consensus-raft-start.yml
       vars:
         PrivacyImpl: tessera
