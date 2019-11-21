@@ -1,0 +1,9 @@
+---
+- name: stop epirus
+  shell: "/etc/init.d/epirus stop"
+  become: yes
+- pause:
+    seconds: 20
+- name: kill mongodb container
+  shell: "docker rm $(docker ps -aqf \"name=epirus-free_mongodb_1\")"
+  become: yes

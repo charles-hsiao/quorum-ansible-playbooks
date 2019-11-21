@@ -1,0 +1,4 @@
+---
+- name: start epirus
+  shell: "NODE_ENDPOINT=http://{{ server_ip }}:{{ server_port | default('22000') }} /etc/init.d/epirus start"
+  become: yes
