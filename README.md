@@ -68,6 +68,16 @@ PrivacyImpl | Privacy implementation | tessera <br> tessera-remote <br> constell
 - include_tasks: tasks/txn-send-private-events.yml
 ```
 
+#### Start mining
+```
+- include_tasks: tasks/consensus-mining-start.yml
+```
+
+#### Stop mining
+```
+- include_tasks: tasks/consensus-mining-stop.yml
+```
+
 #### Stop all consensus
 ```
 - include_tasks: tasks/consensus-stop-all.yml
