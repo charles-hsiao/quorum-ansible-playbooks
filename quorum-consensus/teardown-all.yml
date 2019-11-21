@@ -2,7 +2,7 @@
   hosts: 127.0.0.1
   tasks:
     - include_tasks: tasks/debug-node-index.yml
-- name: Teardown
+- name: Teardown nodes
   hosts: all
   vars_files:
     - vars/common.yml
@@ -11,4 +11,8 @@
     - include_tasks: tasks/iptables-clear-all.yml
     - include_tasks: tasks/netem-clear-all.yml
     - include_tasks: tasks/monit-block-exporter-restart.yml
+- name: Teardown eprius
+  hosts: 127.0.0.1
+  connection: local
+  tasks:
     - include_tasks: tasks/eprius-stop.yml
