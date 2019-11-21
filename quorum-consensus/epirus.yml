@@ -1,0 +1,11 @@
+- name: epirus demo
+  hosts: 127.0.0.1
+  connection: local
+  tasks:
+    - include_tasks: tasks/eprius-stop.yml
+    - include_tasks: tasks/eprius-start.yml
+      vars:
+        server_ip: "{{ hostvars[groups['aws_ec2'][0]]['private_ip_address'] }}"
+    - pause:
+        prompt: "Stop eprius?"
+    - include_tasks: tasks/eprius-stop.yml
