@@ -73,6 +73,27 @@ PrivacyImpl | Privacy implementation | tessera <br> tessera-remote <br> constell
 - include_tasks: tasks/consensus-stop-all.yml
 ```
 
+### Moitoring - epirus
+
+#### epirus common variables
+Variables | Description | Optional values | Default values | Required
+--------- | ----------- | --------------- | -------------- | --------
+server_ip | IP of quorum/geth nodes to monitor | - | - | True
+server_port | Port of geth json rpc | - | 22000 | False
+
+#### Start epirus
+```
+- include_tasks: tasks/eprius-start.yml
+  vars:
+    server_ip: ${server_ip}
+    server_port: ${server_port}
+```
+
+#### Stop epirus
+```
+- include_tasks: tasks/eprius-stop.yml
+```
+
 ### Network Connectivity - iptables
 
 #### iptables common variables
