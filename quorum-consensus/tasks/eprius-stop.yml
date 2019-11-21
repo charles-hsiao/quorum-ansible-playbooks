@@ -1,7 +1,7 @@
 ---
-- name: Check if eprius process exist
+- name: Check if epirus process exist
   stat:
-    path: /var/run/eprius.pid
+    path: /var/run/epirus.pid
   register: pid_existed
 - name: stop epirus
   shell: "/etc/init.d/epirus stop"
