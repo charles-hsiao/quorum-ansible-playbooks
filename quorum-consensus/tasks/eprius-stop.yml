@@ -1,9 +1,22 @@
 ---
+- name: Check if eprius process exist
+  stat:
+    path: /var/run/eprius.pid
+  register: pid_existed
 - name: stop epirus
   shell: "/etc/init.d/epirus stop"
   become: yes
+  when: pid_existed.stat.exists == True
 - pause:
     seconds: 20
-- name: kill mongodb container
+  when: pid_existed.stat.exists == True
+- name: check if mongodb container exist
+  shell: "docker ps -aqf \"name=epirus-free_mongodb_1\" | wc -m"
+  become: yes
+  register: mongodb_count
+- name: debug
+  debug: msg={{ mongodb_count.stdout }}
+- name: kill mongodb container while it existed
   shell: "docker rm $(docker ps -aqf \"name=epirus-free_mongodb_1\")"
   become: yes
+  when: mongodb_count.stdout != "0"
