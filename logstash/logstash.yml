@@ -1,0 +1,32 @@
+- name: Collect ES information
+  hosts: 127.0.0.1
+  vars:
+    aws_profile: quorum
+    aws_region: us-west-2
+    target_es: es-quorum
+  tasks:
+    - name: register ES domain
+      shell: AWS_PROFILE={{ aws_profile }} aws es describe-elasticsearch-domain --domain-name={{ target_es }} --region={{ aws_region }} | jq -r .DomainStatus.Endpoint
+      register: ES_DOMAIN
+    - name: Set facts
+      set_fact:
+        ES_DOMAIN: "{{ ES_DOMAIN.stdout_lines }}"
+      delegate_to: '{{ item }}'
+      delegate_facts: True
+      with_items: "{{ groups['all'] }}"
+- name: Setup logstash
+  gather_facts: True
+  hosts: all
+  vars:
+    es_domain: "{{ ES_DOMAIN[0] }}"
+  tasks:
+    - debug: var=ES_DOMAIN
+    - name: init input config - filebeat
+      template: src=files/etc/logstash/conf.d/input-100-filebeat.conf.tpl dest=/etc/logstash/conf.d/input-100-filebeat.conf
+      become: yes
+    - name: init output config - elasticsearch
+      template: src=files/etc/logstash/conf.d/output-100-elasticsearch.conf.tpl dest=/etc/logstash/conf.d/output-100-elasticsearch.conf
+      become: yes
+    - name: restart logstash
+      shell: monit restart logstash
+      become: yes
