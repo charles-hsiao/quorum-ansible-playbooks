@@ -1,0 +1,26 @@
+plugin: aws_ec2
+
+cache: yes
+cache_plugin: jsonfile
+cache_timeout: 7200
+cache_connection: /tmp
+cache_prefix: aws_ec2_logstash
+
+#hostnames:
+#  - tag:Name=stag-quorum-quorum-node  # Return specific hosts only
+# Set individual variables with compose
+
+#keyed_groups:
+#  # add hosts to tag_Name_value groups for each aws_ec2 host's tags.Name variable
+#  - key: tags.Name
+#    #prefix: tag_Name_
+#    separator: ""
+
+filters:
+      # all instances with their `Environment` tag set to `dev`
+      tag:Role: logstash
+
+compose:
+  # Use the private IP address to connect to the host
+  # (note: this does not modify inventory_hostname, which is set via I(hostnames))
+  ansible_host: private_ip_address
