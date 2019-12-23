@@ -9,6 +9,9 @@
 # For more available modules and options, please see the filebeat.reference.yml sample
 # configuration file.
 #=========================== Filebeat inputs =============================
+filebeat.config.inputs:
+  enabled: true
+  path: conf.d/*.yml
 filebeat.inputs:
 # Each - is an input. Most options can be set at the input level, so
 # you can use different inputs for various configurations.
