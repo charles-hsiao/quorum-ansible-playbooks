@@ -1,0 +1,28 @@
+- name: Collect logstash information
+  hosts: 127.0.0.1
+  vars:
+    aws_profile: quorum
+    aws_region: us-west-2
+  tasks:
+    - name: register logstash ip
+      shell: AWS_PROFILE={{ aws_profile }} aws ec2 describe-instances --region={{ aws_region }} --filter 'Name=tag:Role,Values=logstash' | jq -r .Reservations[0].Instances[0].PrivateIpAddress
+      register: LOGSTASH_IP
+    - name: Set facts
+      set_fact:
+        LOGSTASH_IP: "{{ LOGSTASH_IP.stdout_lines }}"
+      delegate_to: '{{ item }}'
+      delegate_facts: True
+      with_items: "{{ groups['all'] }}"
+- name: Setup filebeat
+  gather_facts: True
+  hosts: all
+  vars:
+    logstash_ip: "{{ LOGSTASH_IP[0] }}"
+  tasks:
+    - debug: var=LOGSTASH_IP
+    - name: init filebeat config
+      template: src=files/etc/filebeat/filebeat.yml.tpl dest=/etc/filebeat/filebeat.yml
+      become: yes
+    - name: restart filebeat
+      shell: monit restart filebeat
+      become: yes
