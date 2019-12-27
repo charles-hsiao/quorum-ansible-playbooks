@@ -1,3 +1,0 @@
----
-- name: Send 5000 private events in 50 TPS
-  shell: "cd {{ ProjectDir }} && bash runscript.sh samples/simple-event/private-generate-events-50-5000.js"
