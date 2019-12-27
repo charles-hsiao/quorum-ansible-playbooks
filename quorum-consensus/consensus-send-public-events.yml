@@ -4,7 +4,4 @@
     - vars/common.yml
   tasks:
     - include_tasks: tasks/txn-send-public-events.yml
-    - pause:
-        prompt: "Start sending 1000 transactions?"
-    - include_tasks: tasks/txn-send-public-events.yml
       with_sequence: count=50
