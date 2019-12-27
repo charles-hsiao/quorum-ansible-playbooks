@@ -3,5 +3,4 @@
   vars_files:
     - vars/common.yml
   tasks:
-    - include_tasks: tasks/txn-send-public-events.yml
-      with_sequence: count=50
+    - include_tasks: tasks/txn-send-public-events-100-5000.yml
