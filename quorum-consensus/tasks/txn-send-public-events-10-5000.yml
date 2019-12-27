@@ -1,3 +1,0 @@
----
-- name: Send 5000 public events in 10 TPS
-  shell: "cd {{ ProjectDir }} && bash runscript.sh samples/simple-event/public-generate-events-10-5000.js"

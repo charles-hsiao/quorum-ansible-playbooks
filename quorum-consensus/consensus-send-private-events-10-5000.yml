@@ -3,4 +3,7 @@
   vars_files:
     - vars/common.yml
   tasks:
-    - include_tasks: tasks/txn-send-private-events-10-5000.yml
+    - include_tasks: tasks/txn-send-private-events-loop.yml
+      vars:
+        tps: 10
+        loop: 500

@@ -1,0 +1,3 @@
+---
+- name: Send public events in n TPS
+  shell: "cd {{ ProjectDir }} && bash runscript_loop.sh samples/simple-event/public-generate-events-{{ tps }}.js {{ loop }}"
