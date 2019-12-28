@@ -9,3 +9,4 @@
         test_mode: rndrw
         rw_ratio: 2
         threads: 2
+        time_sec: 60
