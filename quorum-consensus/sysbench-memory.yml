@@ -3,9 +3,10 @@
   tasks:
     - include_tasks: tasks/sysbench-memory.yml
       vars:
-        block_size: 8K
-        total_size: 200G
+        block_size: 512M
+        total_size: 1000G
         operation: write
         access_mode: rnd
         scope: global
         threads: 2
+        time_sec: 60
