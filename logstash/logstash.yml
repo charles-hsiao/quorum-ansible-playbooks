@@ -29,10 +29,13 @@
       become: yes
     - name: init filter config - common
       template: src=files/etc/logstash/conf.d/filter-100-common.conf.tpl dest=/etc/logstash/conf.d/filter-100-common.conf
+      become: yes
     - name: init filter config - geth
       template: src=files/etc/logstash/conf.d/filter-200-geth.conf.tpl dest=/etc/logstash/conf.d/filter-200-geth.conf
+      become: yes
     - name: init filter config - privacy impl
       template: src=files/etc/logstash/conf.d/filter-300-privacy-impl.conf.tpl dest=/etc/logstash/conf.d/filter-300-privacy-impl.conf
+      become: yes
     - name: restart logstash
       shell: monit restart logstash
       become: yes
