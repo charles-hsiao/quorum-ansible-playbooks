@@ -18,6 +18,8 @@
   hosts: all
   vars:
     logstash_ip: "{{ LOGSTASH_IP[0] }}"
+  vars_files:
+    - ../quorum-consensus/vars/common.yml
   tasks:
     - debug: var=LOGSTASH_IP
     - name: init filebeat config
@@ -27,6 +29,9 @@
       file:
         path: /etc/filebeat/conf.d
         state: directory
+      become: yes
+    - name: init filebeat input config
+      template: src=files/etc/filebeat/conf.d/application.yml.tpl dest=/etc/filebeat/conf.d/application.yml
       become: yes
     - name: restart filebeat
       shell: monit restart filebeat
