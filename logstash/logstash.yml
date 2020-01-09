@@ -29,6 +29,8 @@
       become: yes
     - name: init filter config - common
       template: src=files/etc/logstash/conf.d/filter-100-common.conf.tpl dest=/etc/logstash/conf.d/filter-100-common.conf
+    - name: init filter config - geth
+      template: src=files/etc/logstash/conf.d/filter-200-geth.conf.tpl dest=/etc/logstash/conf.d/filter-200-geth.conf
     - name: restart logstash
       shell: monit restart logstash
       become: yes
