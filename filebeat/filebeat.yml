@@ -23,6 +23,11 @@
     - name: init filebeat config
       template: src=files/etc/filebeat/filebeat.yml.tpl dest=/etc/filebeat/filebeat.yml
       become: yes
+    - name: create filebeat config path
+      file:
+        path: /etc/filebeat/conf.d
+        state: directory
+      become: yes
     - name: restart filebeat
       shell: monit restart filebeat
       become: yes
