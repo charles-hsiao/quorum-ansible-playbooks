@@ -27,6 +27,8 @@
     - name: init output config - elasticsearch
       template: src=files/etc/logstash/conf.d/output-100-elasticsearch.conf.tpl dest=/etc/logstash/conf.d/output-100-elasticsearch.conf
       become: yes
+    - name: init filter config - common
+      template: src=files/etc/logstash/conf.d/filter-100-common.conf.tpl dest=/etc/logstash/conf.d/filter-100-common.conf
     - name: restart logstash
       shell: monit restart logstash
       become: yes
