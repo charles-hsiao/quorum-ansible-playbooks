@@ -12,7 +12,7 @@
     - {{ ProjectDir }}/qdata/logs/tessera.log
   fields:
     SERVICE: "quorum-nodes"
-    MODULE: "private-impl"
+    MODULE: "privacy-impl"
     LOG_TYPE: "tessera"
   fields_under_root: true
 
@@ -21,6 +21,6 @@
     - {{ ProjectDir }}/qdata/logs/constellation.log
   fields:
     SERVICE: "quorum-nodes"
-    MODULE: "private-impl"
+    MODULE: "privacy-impl"
     LOG_TYPE: "constellation"
   fields_under_root: true
