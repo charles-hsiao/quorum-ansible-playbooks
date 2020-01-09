@@ -31,6 +31,8 @@
       template: src=files/etc/logstash/conf.d/filter-100-common.conf.tpl dest=/etc/logstash/conf.d/filter-100-common.conf
     - name: init filter config - geth
       template: src=files/etc/logstash/conf.d/filter-200-geth.conf.tpl dest=/etc/logstash/conf.d/filter-200-geth.conf
+    - name: init filter config - privacy impl
+      template: src=files/etc/logstash/conf.d/filter-300-privacy-impl.conf.tpl dest=/etc/logstash/conf.d/filter-300-privacy-impl.conf
     - name: restart logstash
       shell: monit restart logstash
       become: yes
