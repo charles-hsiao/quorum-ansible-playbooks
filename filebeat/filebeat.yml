@@ -6,10 +6,10 @@
   tasks:
     - name: register logstash ip
       shell: AWS_PROFILE={{ aws_profile }} aws ec2 describe-instances --region={{ aws_region }} --filter 'Name=tag:Role,Values=logstash' | jq -r .Reservations[0].Instances[0].PrivateIpAddress
-      register: LOGSTASH_IP
+      register: OUTPUT_LOGSTASH_IP
     - name: Set facts
       set_fact:
-        LOGSTASH_IP: "{{ LOGSTASH_IP.stdout_lines }}"
+        LOGSTASH_IP: "{{ OUTPUT_LOGSTASH_IP.stdout_lines }}"
       delegate_to: '{{ item }}'
       delegate_facts: True
       with_items: "{{ groups['all'] }}"
