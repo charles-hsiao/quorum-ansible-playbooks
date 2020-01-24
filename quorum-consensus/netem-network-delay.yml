@@ -41,7 +41,7 @@
         delay_time: 500ms
         margin_time: 50ms
         probability: 25%
-- name: Add delay with margin + normal distrubution for node-2
+- name: Add delay with margin + normal distribution for node-2
   hosts: aws_ec2[1]
   vars_files:
     - vars/common.yml
