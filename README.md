@@ -175,7 +175,7 @@ network_rate_limit | Network rate limit, input in speed unit, ex: 256kbit | - | 
     probability: ${probability}
 ```
 
-#### netem - Delay with margin distrubution
+#### netem - Delay with margin distribution
 ```
 - include_tasks: tasks/netem-delay-margin-distribution.yml
   vars:
