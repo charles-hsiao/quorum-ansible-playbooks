@@ -1,4 +1,4 @@
 ---
 - name: Clear all wondershaper rate control
-  shell: "wordershaper -c -a {{ network_interface | default('eth0') }}"
+  shell: "wondershaper -c {{ network_interface | default('eth0') }}"
   become: yes
