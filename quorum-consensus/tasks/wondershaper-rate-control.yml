@@ -1,4 +1,4 @@
 ---
 - name: Action for rate control (Limit bandwidth)
-  shell: "wondershaper {{ network_interface | default('eth0') }} {{ network_download_limit | default('4096000000') }} {{ network_download_limit | default('4096000000') }}"
+  shell: "wondershaper {{ network_interface | default('eth0') }} {{ network_download_limit | default('4096000000') }} {{ network_upload_limit | default('4096000000') }}"
   become: yes
