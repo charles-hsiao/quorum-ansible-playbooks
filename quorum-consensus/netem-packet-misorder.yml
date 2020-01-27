@@ -1,4 +1,4 @@
-- name: Add packet misorder for node-1
+- name: Add packet misorder with specific gap for node-1
   hosts: aws_ec2[0]
   vars_files:
     - vars/common.yml
@@ -11,7 +11,7 @@
         delay_time: 10ms
         probability: 25%
         correlation_probability: 50%
-- name: Add packet misorder for node-2
+- name: Add packet misorder with correlation probability for node-2
   hosts: aws_ec2[1]
   vars_files:
     - vars/common.yml

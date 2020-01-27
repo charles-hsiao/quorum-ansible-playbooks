@@ -1,0 +1,4 @@
+---
+- name: Action for packet duplicate
+  shell: "tc qdisc {{ action | default('add') }} dev {{ network_interface | default('eth0') }} root netem duplicate {{ probability }}"
+  become: yes

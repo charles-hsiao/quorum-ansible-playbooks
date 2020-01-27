@@ -1,0 +1,10 @@
+- name: Add packet duplicate for all nodes
+  hosts: all
+  vars_files:
+    - vars/common.yml
+  tasks:
+    - include_tasks: tasks/netem-clear-all.yml
+    - include_tasks: tasks/netem-packet-duplicate.yml
+      vars: 
+        action: add
+        probability: 0.1%
