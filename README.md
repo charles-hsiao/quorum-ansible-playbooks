@@ -236,6 +236,15 @@ network_rate_limit | Network rate limit, input in speed unit, ex: 256kbit | - | 
     correlation_probability: ${correlation_probability}
 ```
 
+#### netem - Packet duplicate
+```
+- include_tasks: tasks/netem-packet-duplicate.yml
+  vars:
+    action: ${action}
+    network_interface: ${network_interface}
+    probability: ${probability}
+```
+
 #### netem - Network rate limit control
 ```
 - include_tasks: tasks/netem-network-rate-control.yml
