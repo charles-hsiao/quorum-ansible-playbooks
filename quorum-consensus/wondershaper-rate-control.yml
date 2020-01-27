@@ -6,4 +6,4 @@
     - include_tasks: tasks/wondershaper-clear-all.yml
     - include_tasks: tasks/wondershaper-rate-control.yml
       vars: 
-        network_download_limit: 256
+        network_download_limit: 4096
