@@ -1,0 +1,9 @@
+- name: Add network rate control on node-2
+  hosts: aws_ec2[1]
+  vars_files:
+    - vars/common.yml
+  tasks:
+    - include_tasks: tasks/wondershaper-clear-all.yml
+    - include_tasks: tasks/wondershaper-rate-control.yml
+      vars: 
+        network_download_limit: 256
