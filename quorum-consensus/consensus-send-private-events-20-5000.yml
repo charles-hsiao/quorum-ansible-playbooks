@@ -3,7 +3,7 @@
   vars_files:
     - vars/common.yml
   tasks:
-      - include_tasks: tasks/txn-send-private-events-loop.yml
+    - include_tasks: tasks/txn-send-private-events-loop.yml
       vars:
         tps: 20
         loop: 250
