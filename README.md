@@ -262,6 +262,31 @@ network_rate_limit | Network rate limit, input in speed unit, ex: 256kbit | - | 
     network_interface: ${network_interface}
 ```
 
+### Network Connectivity - wondershaper
+
+#### wondershaper common variables
+Variables | Description | Optional values | Default values | Required
+--------- | ----------- | --------------- | -------------- | --------
+network_interface | Network interface to set-up | - | eth0 | False
+network_download_limit | Network download limit in kbps | - | 4096 | False
+network_upload_limit | Network upload limit in kbps | - | 4096 | False
+
+#### wondershaper - Network rate limit control
+```
+- include_tasks: tasks/wondershaper-rate-control.yml
+  vars:
+    network_interface: ${network_interface}
+    network_download_limit: ${network_download_limit}
+    network_upload_limit: ${network_upload_limit}
+```
+
+#### wondershaper - Clear all
+```
+- include_tasks: tasks/wondershaper-clear-all.yml
+  vars:
+    network_interface: ${network_interface}
+```
+
 ### Benchmarking - sysbench
 
 #### Common variables
